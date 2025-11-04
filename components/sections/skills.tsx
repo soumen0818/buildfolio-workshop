@@ -1,20 +1,34 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import {
+  JavaScriptIcon,
+  PythonIcon,
+  CIcon,
+  ReactIcon,
+  NextJsIcon,
+  TypeScriptIcon,
+  MongoDBIcon,
+  NodeJsIcon,
+  ExpressJsIcon,
+  MySQLIcon,
+  SolidityIcon,
+  Web3Icon,
+} from "@/components/icons"
 
 const skills = [
-  "JavaScript",
-  "Python",
-  "C",
-  "React.js",
-  "Next.js",
-  "TypeScript",
-  "MongoDB",
-  "Node.js",
-  "Express.js",
-  "MySQL",
-  "Solidity",
-  "Web3",
+  { name: "JavaScript", icon: JavaScriptIcon },
+  { name: "Python", icon: PythonIcon },
+  { name: "C", icon: CIcon },
+  { name: "React.js", icon: ReactIcon },
+  { name: "Next.js", icon: NextJsIcon },
+  { name: "TypeScript", icon: TypeScriptIcon },
+  { name: "MongoDB", icon: MongoDBIcon },
+  { name: "Node.js", icon: NodeJsIcon },
+  { name: "Express.js", icon: ExpressJsIcon },
+  { name: "MySQL", icon: MySQLIcon },
+  { name: "Solidity", icon: SolidityIcon },
+  { name: "Web3", icon: Web3Icon },
 ]
 
 export default function Skills() {
@@ -57,32 +71,35 @@ export default function Skills() {
 
         {/* Skills grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {skills.map((skill, index) => (
-            <div
-              key={skill}
-              className={`group relative transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{
-                transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
-              }}
-            >
-              <div className="relative p-6 bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg border border-cyan-400/30 overflow-hidden group-hover:border-cyan-400/60 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-cyan-500/30 group-hover:scale-110">
-                {/* Animated background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {skills.map((skill, index) => {
+            const IconComponent = skill.icon
+            return (
+              <div
+                key={skill.name}
+                className={`group relative transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                style={{
+                  transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
+                }}
+              >
+                <div className="relative p-6 bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg border border-cyan-400/30 overflow-hidden group-hover:border-cyan-400/60 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-cyan-500/30 group-hover:scale-110">
+                  {/* Animated background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Content */}
-                <div className="relative z-10 flex items-center justify-center h-16">
-                  <span className="text-base md:text-lg font-semibold text-center text-cyan-200 group-hover:text-cyan-100 transition-colors">
-                    {skill}
-                  </span>
+                  {/* Content */}
+                  <div className="relative z-10 flex flex-col items-center justify-center gap-3 h-16">
+                    <IconComponent />
+                    <span className="text-sm md:text-base font-semibold text-center text-cyan-200 group-hover:text-cyan-100 transition-colors">
+                      {skill.name}
+                    </span>
+                  </div>
+
+                  {/* Glow effect on hover */}
+                  <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-inner shadow-cyan-400/20"></div>
                 </div>
-
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-inner shadow-cyan-400/20"></div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
