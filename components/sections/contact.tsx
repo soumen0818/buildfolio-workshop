@@ -60,7 +60,7 @@ export default function Contact() {
   }
 
   return (
-    <section ref={ref} className="min-h-screen flex items-center justify-center px-4 py-20 relative">
+    <section id="contact" ref={ref} className="min-h-screen flex items-center justify-center px-4 py-20 relative">
       <div className="max-w-3xl mx-auto w-full">
         {/* Title */}
         <div className="text-center mb-16">
